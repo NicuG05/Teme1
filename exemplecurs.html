@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercitii curs</title>
+</head>
+<body>
+<input onclick="alertaVehicle1()" type="checkbox" id="vehicle1" name="vehicle1" value="bike">
+<label for="vehicle1">i have a bike</label><br>
+<input onclick="alertaVehicle2()" type="checkbox" id="vehicle2" name="vehicle2" value="car" >
+<label for="vehicle2">i have a car</label><br>
+
+</body>
+</html>
+<script>
+    console.log("incepe executia js")
+    let variabilav1= window.localStorage.getItem("Vehicle1")
+    console.log(variabilav1)
+    if(variabilav1==null){
+        alert("baza de date corupta")
+    }else {
+        alert("baza de date este ok")
+        let v=document.getElementById("vehicle1")
+        v.checked=true
+    }
+    let variabilav2= window.localStorage.getItem("Vehicle2")
+
+    document.addEventListener("DOMContentLoaded", function () {
+        if(localStorage.getItem("Vehicle1")==="bike"){
+            vehicle1.checked=true;}
+        else{
+            vehicle1.checked=false;
+        }
+        if(localStorage.getItem("Vehicle2")==="car"){
+            vehicle2.checked=true;}
+        else{
+            vehicle2.checked=false;
+        }
+    })
+        function alertaVehicle1(){
+        let v1= document.getElementById("vehicle1")
+        if(v1.checked){
+            alert("vehicle 1 selected")
+            window.localStorage.setItem("Vehicle1",v1.value)
+
+
+        }else{
+            alert("Vehicle 1 unselected")
+            window.localStorage.removeItem("Vehicle1")
+
+        }
+        console.log(v1.value)
+    }
+   function alertaVehicle2(){
+        let v2= document.getElementById("vehicle2")
+        if(v2.checked) {
+            alert("vehicle 2 selected")
+            window.localStorage.setItem("Vehicle2", v2.value)
+        }else {
+            alert("vehicle 2 unselected")
+            window.localStorage.removeItem("Vehicle2")
+
+        }
+        console.log(v2.value)
+    }
+    console.log("finalizez executia js")
+</script>
